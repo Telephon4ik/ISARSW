@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox prefHeight="600" prefWidth="550" spacing="0" styleClass="modal-container"
+      xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="org.example.isarsw.controller.EditFlightController">
+
+    <!-- Заголовок окна -->
+    <HBox alignment="CENTER_LEFT" styleClass="modal-header">
+        <VBox spacing="2">
+            <Label style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: white;"
+                   text="Редактирование поезда" />
+            <Label fx:id="lblId" style="-fx-font-size: 12px; -fx-text-fill: #e3f2fd;" />
+        </VBox>
+    </HBox>
+
+    <!-- Основной контент -->
+    <ScrollPane fitToWidth="true" style="-fx-background-color: transparent; -fx-border-color: transparent;"
+                vbarPolicy="NEVER">
+        <VBox spacing="15" style="-fx-padding: 25;">
+
+            <!-- Карточка с формой -->
+            <VBox spacing="20"
+                  style="-fx-background-color: white; -fx-background-radius: 8; -fx-padding: 25;
+                         -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 8, 0, 0, 1);">
+
+                <GridPane hgap="15" vgap="15">
+                    <columnConstraints>
+                        <ColumnConstraints percentWidth="100" />
+                    </columnConstraints>
+
+                    <!-- ИСПРАВЛЕНО: rowConstraints перемещен в правильное место -->
+                    <rowConstraints>
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
+                    </rowConstraints>
+
+                    <!-- Основные поля -->
+                    <VBox spacing="5" GridPane.rowIndex="0">
+                        <Label style="-fx-font-size: 13px; -fx-text-fill: #2c3e50; -fx-font-weight: 500;"
+                               text="Номер поезда" />
+                        <TextField fx:id="tfNumber"
+                                   style="-fx-font-size: 14px; -fx-pref-height: 40px; -fx-background-radius: 4;" />
+                    </VBox>
+
+                    <VBox spacing="5" GridPane.rowIndex="1">
+                        <Label style="-fx-font-size: 13px; -fx-text-fill: #2c3e50; -fx-font-weight: 500;"
+                               text="Маршрут" />
+                        <HBox spacing="10">
+                            <TextField fx:id="tfFrom"
+                                       style="-fx-font-size: 14px; -fx-pref-height: 40px; -fx-background-radius: 4; -fx-pref-width: 150px;" />
+                            <Label style="-fx-font-size: 14px; -fx-text-fill: #7f8c8d; -fx-padding: 10 0;"
+                                   text="→" />
+                            <TextField fx:id="tfTo"
+                                       style="-fx-font-size: 14px; -fx-pref-height: 40px; -fx-background-radius: 4; -fx-pref-width: 150px;" />
+                        </HBox>
+                    </VBox>
+
+                    <HBox spacing="20" GridPane.rowIndex="2">
+                        <VBox spacing="5" HBox.hgrow="ALWAYS">
+                            <Label style="-fx-font-size: 13px; -fx-text-fill: #2c3e50; -fx-font-weight: 500;"
+                                   text="Платформа" />
+                            <TextField fx:id="tfPlatform"
+                                       style="-fx-font-size: 14px; -fx-pref-height: 40px; -fx-background-radius: 4;" />
+                        </VBox>
+
+                        <VBox spacing="5" HBox.hgrow="ALWAYS">
+                            <Label style="-fx-font-size: 13px; -fx-text-fill: #2c3e50; -fx-font-weight: 500;"
+                                   text="Статус" />
+                            <ChoiceBox fx:id="cbStatus"
+                                       style="-fx-font-size: 14px; -fx-pref-height: 40px; -fx-background-color: white; -fx-border-color: #ddd; -fx-border-radius: 4; -fx-background-radius: 4;" />
+                        </VBox>
+                    </HBox>
+
+                    <!-- Дата и время прибытия -->
+                    <VBox spacing="5" GridPane.rowIndex="3">
+                        <Label style="-fx-font-size: 13px; -fx-text-fill: #2c3e50; -fx-font-weight: 500;"
+                               text="Дата прибытия" />
+                        <DatePicker fx:id="dpArrive"
+                                    style="-fx-font-size: 14px; -fx-pref-height: 40px; -fx-background-color: white; -fx-border-color: #ddd; -fx-border-radius: 4; -fx-background-radius: 4;" />
+                    </VBox>
+
+                    <VBox spacing="5" GridPane.rowIndex="4">
+                        <Label style="-fx-font-size: 13px; -fx-text-fill: #2c3e50; -fx-font-weight: 500;"
+                               text="Время прибытия" />
+                        <HBox fx:id="arriveTime" style="-fx-pref-height: 40px;" />
+                    </VBox>
+
+                    <!-- Время стоянки -->
+                    <VBox spacing="5" GridPane.rowIndex="5">
+                        <!-- ИСПРАВЛЕНО: Добавлен styleClass вместо inline стилей для consistency -->
+                        <Label styleClass="info-label" text="Время стоянки (минут)" />
+                        <HBox fx:id="standingTimeBox" prefHeight="40" />
+                    </VBox>
+
+                    <!-- Расчетное время отправления -->
+                    <VBox spacing="5" GridPane.rowIndex="6">
+                        <Label style="-fx-font-size: 13px; -fx-text-fill: #2c3e50; -fx-font-weight: 500;"
+                               text="Расчетное время отправления" />
+                        <HBox alignment="CENTER_LEFT" spacing="10">
+                            <Label fx:id="lblDepartureTime"
+                                   style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #3498db;"
+                                   text="--:--" />
+                            <Label style="-fx-font-size: 12px; -fx-text-fill: #7f8c8d;"
+                                   text="(прибытие + стоянка)" />
+                        </HBox>
+                    </VBox>
+
+                </GridPane>
+            </VBox>
+
+        </VBox>
+    </ScrollPane>
+
+    <!-- Компактная панель действий -->
+    <HBox alignment="CENTER_RIGHT" spacing="10"
+          style="-fx-padding: 15 20; -fx-background-color: #f5f5f5; -fx-border-color: #e0e0e0; -fx-border-width: 1px 0 0 0;">
+        <Button onAction="#onCancel" styleClass="btn-secondary" text="Отмена" />
+        <Button onAction="#onSave" styleClass="btn-primary" text="Сохранить" />
+    </HBox>
+
+</VBox>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox prefHeight="420" prefWidth="480" spacing="0" styleClass="modal-container" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.isarsw.controller.FiltersController">
+
+    <!-- Заголовок окна -->
+    <HBox alignment="CENTER_LEFT" styleClass="modal-header">
+        <VBox spacing="2">
+            <Label styleClass="modal-title" text="Фильтры поездов" />
+            <Label styleClass="modal-subtitle" text="Настройте параметры фильтрации" />
+        </VBox>
+    </HBox>
+
+    <!-- Основной контент -->
+    <VBox spacing="20" style="-fx-padding: 25;" VBox.vgrow="ALWAYS">
+        <VBox spacing="20" styleClass="modal-content" VBox.vgrow="ALWAYS">
+            <GridPane hgap="15" vgap="15">
+                <columnConstraints>
+                    <ColumnConstraints percentWidth="100" />
+                </columnConstraints>
+
+                <!-- Статус -->
+                <VBox spacing="5" GridPane.rowIndex="0">
+                    <Label styleClass="info-label" text="Статус поезда" />
+                    <ChoiceBox fx:id="cbStatus" styleClass="combo-box" />
+                </VBox>
+
+                <!-- Платформа -->
+                <VBox spacing="5" GridPane.rowIndex="1">
+                    <Label styleClass="info-label" text="Платформа" />
+                    <TextField fx:id="tfPlatform" promptText="Например: A1" styleClass="text-field" />
+                </VBox>
+
+                <!-- Диапазон дат -->
+                <VBox spacing="5" GridPane.rowIndex="2">
+                    <Label styleClass="info-label" text="Дата прибытия (от)" />
+                    <DatePicker fx:id="dpFrom" styleClass="date-picker" />
+                </VBox>
+
+                <VBox spacing="5" GridPane.rowIndex="3">
+                    <Label styleClass="info-label" text="Дата прибытия (до)" />
+                    <DatePicker fx:id="dpTo" styleClass="date-picker" />
+                </VBox>
+            <rowConstraints>
+               <RowConstraints />
+               <RowConstraints />
+               <RowConstraints />
+               <RowConstraints />
+            </rowConstraints>
+
+            </GridPane>
+        </VBox>
+    </VBox>
+
+    <!-- Панель действий -->
+    <HBox alignment="CENTER_RIGHT" spacing="10" style="-fx-padding: 15 20; -fx-background-color: #f5f5f5; -fx-border-color: #e0e0e0; -fx-border-width: 1px 0 0 0;">
+        <Button onAction="#onClose" styleClass="btn-secondary" text="Закрыть" />
+        <Button onAction="#onReset" styleClass="btn-secondary" text="Сбросить" />
+        <Button onAction="#onApply" styleClass="btn-primary" text="Применить" />
+    </HBox>
+
+</VBox>

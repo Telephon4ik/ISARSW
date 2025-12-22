@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<HBox spacing="5" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.isarsw.controller.TimePickerController">
+
+    <ComboBox fx:id="cbHour" prefWidth="81.0" style="-fx-font-size: 14px; -fx-pref-height: 40px; -fx-background-color: white; -fx-border-color: #ddd; -fx-border-radius: 4;" />
+    <ComboBox fx:id="cbMinute" prefWidth="84.0" style="-fx-font-size: 14px; -fx-pref-height: 40px; -fx-background-color: white; -fx-border-color: #ddd; -fx-border-radius: 4;" />
+
+</HBox>

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="org.example.isarsw.controller.ArrivalCheckController"
+      spacing="0"
+      styleClass="modal-container">
+
+    <!-- ЗАГОЛОВОК ОКНА -->
+    <HBox alignment="CENTER_LEFT" styleClass="modal-header">
+        <VBox spacing="2">
+            <Label text="Проверка прибытия поезда" styleClass="modal-title"/>
+            <Label fx:id="lblTimeInfo" styleClass="modal-subtitle"/>
+        </VBox>
+    </HBox>
+
+    <!-- ОСНОВНОЙ КОНТЕНТ -->
+    <ScrollPane fitToWidth="true" styleClass="scroll-pane">
+        <VBox spacing="20" style="-fx-padding: 25;">
+
+            <!-- ИНФОРМАЦИЯ О ПОЕЗДЕ -->
+            <VBox spacing="15" styleClass="modal-content">
+                <Label text="Информация о поезде" styleClass="info-label-bold"/>
+
+                <GridPane hgap="15" vgap="12">
+                    <columnConstraints>
+                        <ColumnConstraints prefWidth="120"/>
+                        <ColumnConstraints prefWidth="350"/>
+                    </columnConstraints>
+
+                    <Label text="Номер поезда:" GridPane.rowIndex="0" GridPane.columnIndex="0"
+                           styleClass="info-label"/>
+                    <Label fx:id="lblFlightNumber" text="--" GridPane.rowIndex="0" GridPane.columnIndex="1"
+                           styleClass="info-label-bold"/>
+
+                    <Label text="Маршрут:" GridPane.rowIndex="1" GridPane.columnIndex="0"
+                           styleClass="info-label"/>
+                    <Label fx:id="lblRoute" text="--" GridPane.rowIndex="1" GridPane.columnIndex="1"
+                           styleClass="info-label"/>
+
+                    <Label text="Платформа:" GridPane.rowIndex="2" GridPane.columnIndex="0"
+                           styleClass="info-label"/>
+                    <Label fx:id="lblPlatform" text="--" GridPane.rowIndex="2" GridPane.columnIndex="1"
+                           styleClass="info-label"/>
+
+                    <Label text="Время прибытия:" GridPane.rowIndex="3" GridPane.columnIndex="0"
+                           styleClass="info-label"/>
+                    <Label fx:id="lblScheduledTime" text="--" GridPane.rowIndex="3" GridPane.columnIndex="1"
+                           styleClass="info-label"/>
+
+                    <Label text="Текущий статус:" GridPane.rowIndex="4" GridPane.columnIndex="0"
+                           styleClass="info-label"/>
+                    <Label fx:id="lblCurrentStatus" text="--" GridPane.rowIndex="4" GridPane.columnIndex="1"
+                           styleClass="info-label-bold"/>
+                </GridPane>
+            </VBox>
+
+            <!-- ВЫБОР СТАТУСА -->
+            <VBox spacing="15" styleClass="modal-content">
+                <Label text="Выберите новый статус:" styleClass="info-label-bold"/>
+
+                <!-- КНОПКИ СТАТУСА В ОДНУ ЛИНИЮ -->
+                <HBox spacing="10" alignment="CENTER" styleClass="status-buttons-container">
+                    <Button fx:id="btnBoarding" text="Посадка" onAction="#onBoarding"
+                            prefWidth="110" prefHeight="45"
+                            minWidth="110" minHeight="45"
+                            styleClass="status-button btn-boarding"/>
+
+                    <Button fx:id="btnDelayed" text="Задержан" onAction="#onDelayed"
+                            prefWidth="110" prefHeight="45"
+                            minWidth="110" minHeight="45"
+                            styleClass="status-button btn-delayed"/>
+
+                    <Button fx:id="btnCancelled" text="Отменён" onAction="#onCancelled"
+                            prefWidth="110" prefHeight="45"
+                            minWidth="110" minHeight="45"
+                            styleClass="status-button btn-cancelled"/>
+
+                    <Button fx:id="btnDeparted" text="Отбыл" onAction="#onDeparted"
+                            prefWidth="110" prefHeight="45"
+                            minWidth="110" minHeight="45"
+                            styleClass="status-button btn-departed"/>
+                </HBox>
+
+                <Label text="Нажмите на соответствующую кнопку для изменения статуса"
+                       style="-fx-font-size: 12px; -fx-text-fill: #7f8c8d; -fx-padding: 10 0 0 0;"/>
+            </VBox>
+        </VBox>
+    </ScrollPane>
+
+    <!-- ПАНЕЛЬ ДЕЙСТВИЙ -->
+    <HBox spacing="10" alignment="CENTER"
+          style="-fx-padding: 20; -fx-background-color: #f5f5f5; -fx-border-color: #e0e0e0; -fx-border-width: 1px 0 0 0;">
+        <Button text="Проверить позже" onAction="#onLater"
+                prefWidth="200" prefHeight="40"
+                styleClass="btn-secondary"/>
+    </HBox>
+
+</VBox>

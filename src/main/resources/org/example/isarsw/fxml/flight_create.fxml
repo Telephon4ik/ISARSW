@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox prefHeight="600" prefWidth="550" spacing="0" styleClass="modal-container"
+      xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="org.example.isarsw.controller.CreateFlightController">
+
+    <!-- Заголовок окна -->
+    <HBox alignment="CENTER_LEFT" styleClass="modal-header">
+        <VBox spacing="2">
+            <Label styleClass="modal-title" text="Создание поезда" />
+            <Label styleClass="modal-subtitle" text="Заполните информацию о новом поезде" />
+        </VBox>
+    </HBox>
+
+    <!-- Основной контент -->
+    <ScrollPane fitToWidth="true" styleClass="scroll-pane" vbarPolicy="AS_NEEDED">
+        <VBox spacing="15" style="-fx-padding: 25;">
+            <!-- Карточка с формой -->
+            <VBox spacing="20" styleClass="modal-content">
+                <GridPane hgap="15" vgap="15">
+                    <columnConstraints>
+                        <ColumnConstraints percentWidth="100" />
+                    </columnConstraints>
+
+                    <!-- ДОБАВЛЕНО: rowConstraints в правильном месте -->
+                    <rowConstraints>
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
+                    </rowConstraints>
+
+                    <!-- Основные поля -->
+                    <VBox spacing="5" GridPane.rowIndex="0">
+                        <Label styleClass="info-label" text="Номер поезда" />
+                        <TextField fx:id="tfNumber" promptText="SU-1234" styleClass="text-field" />
+                    </VBox>
+
+                    <VBox spacing="5" GridPane.rowIndex="1">
+                        <Label styleClass="info-label" text="Маршрут" />
+                        <HBox spacing="10">
+                            <TextField fx:id="tfFrom" prefWidth="150" promptText="Откуда" styleClass="text-field" />
+                            <Label style="-fx-font-size: 14px; -fx-text-fill: #7f8c8d; -fx-padding: 10 0;" text="→" />
+                            <TextField fx:id="tfTo" prefWidth="150" promptText="Куда" styleClass="text-field" />
+                        </HBox>
+                    </VBox>
+
+                    <HBox spacing="20" GridPane.rowIndex="2">
+                        <VBox spacing="5" HBox.hgrow="ALWAYS">
+                            <Label styleClass="info-label" text="Платформа" />
+                            <TextField fx:id="tfPlatform" promptText="A1" styleClass="text-field" />
+                        </VBox>
+
+                        <VBox spacing="5" HBox.hgrow="ALWAYS">
+                            <Label styleClass="info-label" text="Статус" />
+                            <ChoiceBox fx:id="cbStatus" styleClass="combo-box" />
+                        </VBox>
+                    </HBox>
+
+                    <!-- Дата и время прибытия -->
+                    <VBox spacing="5" GridPane.rowIndex="3">
+                        <Label styleClass="info-label" text="Дата прибытия" />
+                        <DatePicker fx:id="dpArrive" styleClass="date-picker" />
+                    </VBox>
+
+                    <VBox spacing="5" GridPane.rowIndex="4">
+                        <Label styleClass="info-label" text="Время прибытия" />
+                        <HBox fx:id="arriveTime" prefHeight="40" />
+                    </VBox>
+
+                    <!-- Время стоянки -->
+                    <VBox spacing="5" GridPane.rowIndex="5">
+                        <Label styleClass="info-label" text="Время стоянки (минут)" />
+                        <HBox fx:id="standingTimeBox" prefHeight="40" />
+                    </VBox>
+
+                    <!-- Расчетное время отправления -->
+                    <VBox spacing="5" GridPane.rowIndex="6">
+                        <Label styleClass="info-label" text="Расчетное время отправления" />
+                        <HBox alignment="CENTER_LEFT" spacing="10">
+                            <Label fx:id="lblDepartureTime" style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #3498db;" text="--:--" />
+                            <Label style="-fx-font-size: 12px; -fx-text-fill: #7f8c8d;" text="(прибытие + стоянка)" />
+                        </HBox>
+                    </VBox>
+                </GridPane>
+            </VBox>
+        </VBox>
+    </ScrollPane>
+
+    <!-- Компактная панель действий -->
+    <HBox alignment="CENTER_RIGHT" spacing="10"
+          style="-fx-padding: 15 20; -fx-background-color: #f5f5f5; -fx-border-color: #e0e0e0; -fx-border-width: 1px 0 0 0;">
+        <Button onAction="#onCancel" styleClass="btn-secondary" text="Отмена" />
+        <Button onAction="#onSave" styleClass="btn-primary" text="Создать" />
+    </HBox>
+
+</VBox>
