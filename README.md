@@ -1,6 +1,8 @@
 # 🚂 ЖД Диспетчер – Управление поездами
 
-![Логотип](https://src/main/resources/org/example/isarsw/images/logo.png)
+<img width="200" height="200" alt="logo" src="https://github.com/user-attachments/assets/673acbd9-9de2-4ba8-b9f8-02c11555c87f" />
+
+<img width="200" height="189" alt="app_icon" src="https://github.com/user-attachments/assets/fe16cb4b-7631-4bb7-8c75-37d43ea705dd" />
 
 ## 📖 Описание
 **ЖД Диспетчер** – это десктопное приложение для управления расписанием поездов на железнодорожных станциях.  
